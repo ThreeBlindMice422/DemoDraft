@@ -530,37 +530,39 @@ j_jsr
             ADDQ.W     #4,BUFFER_COUNTER ; Increase the buffer counter 
             ; JSR
             MOVE.B  #%11111111,EA_SOURCE ; Push Empty EA into source           
-            MOVE.B  #%11111111,EA_DEST ; Push Empty EA into destination
+            MOVE.W  D7,D0             ; Put instruction into D0
+            AND.W   #$003F,D0         ; ANDing the EA bits
+            MOVE.B  D0,EA_DEST       ; Push EA into destination
             
-            ADDQ.L    #2,START_ADDR   ; MOVE pointer to next byte
-            MOVEA.L START_ADDR, A3  ; Loads the start address to A3
+*            ADDQ.L    #2,START_ADDR   ; MOVE pointer to next byte
+*            MOVEA.L START_ADDR, A3  ; Loads the start address to A3
             
             
-            ; for-loop to handle label after JSR
-            MOVEQ   #0, D1          ; Start counter
-            MOVEQ   #4, D2          ; End counter
-            MOVE.W  (A3),D3         ; Move label branch tag to D3            
-loop_label  CMP.B   D1,D2           ; Compare D2 to D1
-            BEQ     loop_label_end  ; if they are equal, then ends
-            
-            ROL.W   #4,D3           ; rotate to get the first char
-            MOVE.W  D3,D4           ; Put into a temp storage
-            AND     #$000F,D4       ; masks the first char 
-            CMP.W   #$000A,D4       ; compare to check if it is a char or a number
-            BGE     TAG_ALPHA       ; if it greater or equel means it is a alphabet
-            BLS     TAG_NUM         ; if it less than means it is a number
-loop_label_back 
-            MOVE.B  D4,(A2)+        ; Push char in label into buffer          
-            ADDQ    #1,D1           ; increase the counter
-            BRA     loop_label      ; branch back
-TAG_ALPHA
-            ADD     #$37, D4        ; convert the hex to ASCII number          
-            BRA     loop_label_back ; back to loop    
-TAG_NUM
-            ADD     #$30, D4        ; convert the hex to ASCII number
-            BRA     loop_label_back ; back to loop
-loop_label_end                          
-            ADDQ.W    #4,BUFFER_COUNTER ; Increase the buffer counter 
+*            ; for-loop to handle label after JSR
+*            MOVEQ   #0, D1          ; Start counter
+*            MOVEQ   #4, D2          ; End counter
+*            MOVE.W  (A3),D3         ; Move label branch tag to D3            
+*loop_label  CMP.B   D1,D2           ; Compare D2 to D1
+*            BEQ     loop_label_end  ; if they are equal, then ends
+*            
+*            ROL.W   #4,D3           ; rotate to get the first char
+*            MOVE.W  D3,D4           ; Put into a temp storage
+*            AND     #$000F,D4       ; masks the first char 
+*            CMP.W   #$000A,D4       ; compare to check if it is a char or a number
+*            BGE     TAG_ALPHA       ; if it greater or equel means it is a alphabet
+*            BLS     TAG_NUM         ; if it less than means it is a number
+*loop_label_back 
+*            MOVE.B  D4,(A2)+        ; Push char in label into buffer          
+*            ADDQ    #1,D1           ; increase the counter
+*            BRA     loop_label      ; branch back
+*TAG_ALPHA
+*            ADD     #$37, D4        ; convert the hex to ASCII number          
+*            BRA     loop_label_back ; back to loop    
+*TAG_NUM
+*            ADD     #$30, D4        ; convert the hex to ASCII number
+*            BRA     loop_label_back ; back to loop
+*loop_label_end                          
+*            ADDQ.W    #4,BUFFER_COUNTER ; Increase the buffer counter 
             MOVEM.L     (SP)+, D0-D7/A0-A1/A3-A6
             RTS
 
@@ -1090,7 +1092,7 @@ j_and_b
             MOVE.B  #' ',(A2)+   ; Push SPACE into buffer
             ADDQ.W    #6,BUFFER_COUNTER ; Increase the buffer counter    
             
-            
+            MOVE.B  #%0000,Immediate_s ; Push Size of immediate data
             
             * AND <ea>, Dn
             MOVE.W  D7,D0             ; Put instruction into D0
@@ -1120,6 +1122,8 @@ j_and_w
             MOVE.B  #' ',(A2)+   ; Push SPACE into buffer
             ADDQ.W    #6,BUFFER_COUNTER ; Increase the buffer counter  
             
+            MOVE.B  #%0001,Immediate_s ; Push Size of immediate data
+            
             * AND <ea>, Dn
             MOVE.W  D7,D0             ; Put instruction into D0
             AND.W   #$003F,D0         ; ANDing the EA bits
@@ -1146,7 +1150,9 @@ j_and_l
             MOVE.B  #'.',(A2)+   ; Push . into buffer
             MOVE.B  #'L',(A2)+   ; Push L into buffer
             MOVE.B  #' ',(A2)+   ; Push SPACE into buffer
-            ADDQ.W    #6,BUFFER_COUNTER ; Increase the buffer counter   
+            ADDQ.W    #6,BUFFER_COUNTER ; Increase the buffer counter 
+
+            MOVE.B  #%0010,Immediate_s ; Push Size of immediate data  
             
             * AND <ea>, Dn
             MOVE.W  D7,D0             ; Put instruction into D0
@@ -1264,6 +1270,8 @@ j_muls_w
             MOVE.B  #' ',(A2)+   ; Push SAPCE into buffer
             ADDQ.W    #7,BUFFER_COUNTER ; Increase the buffer counter 
             
+            MOVE.B  #%0001,Immediate_s ; Push Size of immediate data
+            
             * MULS <ea>, Dn
             MOVE.W  D7,D0             ; Put instruction into D0
             AND.W   #$003F,D0         ; ANDing the EA bits
@@ -1380,6 +1388,8 @@ j_cmp_b
             MOVE.B  #' ',(A2)+   ; Push SAPCE into buffer
             ADDQ.W    #6,BUFFER_COUNTER ; Increase the buffer counter  
             
+            MOVE.B  #%0000,Immediate_s ; Push Size of immediate data
+            
             * CMP <ea>, Dn
             MOVE.W  D7,D0             ; Put instruction into D0
             AND.W   #$003F,D0         ; ANDing the EA bits
@@ -1408,6 +1418,8 @@ j_cmp_w
             MOVE.B  #' ',(A2)+   ; Push SAPCE into buffer
             ADDQ.W    #6,BUFFER_COUNTER ; Increase the buffer counter 
             
+            MOVE.B  #%0001,Immediate_s ; Push Size of immediate data
+            
             * CMP <ea>, Dn
             MOVE.W  D7,D0             ; Put instruction into D0
             AND.W   #$003F,D0         ; ANDing the EA bits
@@ -1427,6 +1439,8 @@ j_cmp_l
             LEA     CMP_L,A1            * loads string to A1
             MOVE.B  #14,D0
             TRAP    #15                 * display the message
+            
+            MOVE.B  #%0010,Immediate_s ; Push Size of immediate data
             
             MOVE.B  #'C',(A2)+   ; Push C into buffer
             MOVE.B  #'M',(A2)+   ; Push M into buffer
@@ -1473,6 +1487,8 @@ j_sub_b
             MOVE.B  #' ',(A2)+   ; Push SAPCE into buffer
             ADDQ.W    #6,BUFFER_COUNTER ; Increase the buffer counter 
             
+            MOVE.B  #%0000,Immediate_s ; Push Size of immediate data
+            
             ; SUB <ea>, Dn         
             MOVE.W  D7,D0             ; Put instruction into D0
             AND.W   #$003F,D0         ; ANDing the EA bits
@@ -1502,6 +1518,8 @@ j_sub_w
             MOVE.B  #' ',(A2)+   ; Push SAPCE into buffer
             ADDQ.W    #6,BUFFER_COUNTER ; Increase the buffer counter  
             
+            MOVE.B  #%0001,Immediate_s ; Push Size of immediate data
+            
             ; SUB <ea>, Dn         
             MOVE.W  D7,D0             ; Put instruction into D0
             AND.W   #$003F,D0         ; ANDing the EA bits
@@ -1528,7 +1546,9 @@ j_sub_l
             MOVE.B  #'.',(A2)+   ; Push . into buffer
             MOVE.B  #'L',(A2)+   ; Push L into buffer
             MOVE.B  #' ',(A2)+   ; Push SAPCE into buffer
-            ADDQ.W    #6,BUFFER_COUNTER ; Increase the buffer counter   
+            ADDQ.W    #6,BUFFER_COUNTER ; Increase the buffer counter
+
+            MOVE.B  #%0010,Immediate_s ; Push Size of immediate data   
             
             ; SUB <ea>, Dn         
             MOVE.W  D7,D0             ; Put instruction into D0
@@ -1654,7 +1674,9 @@ j_add_b
             MOVE.B  #'.',(A2)+   ; Push . into buffer
             MOVE.B  #'B',(A2)+   ; Push B into buffer
             MOVE.B  #' ',(A2)+   ; Push SAPCE into buffer
-            ADDQ.W    #6,BUFFER_COUNTER ; Increase the buffer counter   
+            ADDQ.W    #6,BUFFER_COUNTER ; Increase the buffer counter
+
+            MOVE.B  #%0000,Immediate_s ; Push Size of immediate data   
             
             ; ADD <ea>, Dn
             MOVE.W  D7,D0             ; Put instruction into D0
@@ -1685,6 +1707,8 @@ j_add_w
             MOVE.B  #' ',(A2)+   ; Push SAPCE into buffer
             ADDQ.W    #6,BUFFER_COUNTER ; Increase the buffer counter 
             
+            MOVE.B  #%0001,Immediate_s ; Push Size of immediate data
+            
             ; ADD <ea>, Dn
             MOVE.W  D7,D0             ; Put instruction into D0
             AND.W   #$003F,D0         ; ANDing the EA bits
@@ -1712,6 +1736,8 @@ j_add_l
             MOVE.B  #'L',(A2)+   ; Push L into buffer
             MOVE.B  #' ',(A2)+   ; Push SAPCE into buffer
             ADDQ.W    #6,BUFFER_COUNTER ; Increase the buffer counter 
+            
+            MOVE.B  #%0010,Immediate_s ; Push Size of immediate data
             
             ; ADD <ea>, Dn
             MOVE.W  D7,D0             ; Put instruction into D0
@@ -1742,7 +1768,7 @@ j_adda_w
             MOVE.B  #' ',(A2)+   ; Push SAPCE into buffer
             ADDQ.W    #7,BUFFER_COUNTER ; Increase the buffer counter
             
-            
+            MOVE.B  #%0001,Immediate_s ; Push Size of immediate data
             
             
             ; ADDA <ea>, An   
@@ -1860,6 +1886,8 @@ j_adda_l
             MOVE.B  #'L',(A2)+   ; Push L into buffer
             MOVE.B  #' ',(A2)+   ; Push SAPCE into buffer
             ADDQ.W    #7,BUFFER_COUNTER ; Increase the buffer counter
+            
+            MOVE.B  #%0010,Immediate_s ; Push Size of immediate data
             
             ; ADDA <ea>, An   
             MOVE.W  D7,D0             ; Put instruction into D0
@@ -1987,7 +2015,9 @@ code0001
             MOVE.B  #'.',(A2)+   ; Push . into buffer
             MOVE.B  #'B',(A2)+   ; Push B into buffer
             MOVE.B  #' ',(A2)+   ; Push SAPCE into buffer
-            ADDQ.W  #7,BUFFER_COUNTER ; Increase the buffer counter       
+            ADDQ.W  #7,BUFFER_COUNTER ; Increase the buffer counter
+            
+            MOVE.B  #%0000,Immediate_s ; Push Size of immediate data       
             
             * MOVE <ea>,<ea>
             MOVE.W  D7,D0             ; Put instruction into D0           
@@ -2024,6 +2054,8 @@ code0010
             MOVE.B  #' ',(A2)+   ; Push SAPCE into buffer
             ADDQ.W    #7,BUFFER_COUNTER ; Increase the buffer counter
             
+            MOVE.B  #%0010,Immediate_s ; Push Size of immediate data
+            
             * MOVE <ea>,<ea>        
             MOVE.W  D7,D0             ; Put instruction into D0           
             AND.W   #$003F,D0         ; ANDing the EA bits
@@ -2058,6 +2090,8 @@ code0011
             MOVE.B  #'W',(A2)+   ; Push W into buffer
             MOVE.B  #' ',(A2)+   ; Push SAPCE into buffer
             ADDQ.W    #7,BUFFER_COUNTER ; Increase the buffer counter
+            
+            MOVE.B  #%0001,Immediate_s ; Push Size of immediate data
             
             * MOVE <ea>,<ea>
             MOVE.W  D7,D0             ; Put instruction into D0           
@@ -2111,6 +2145,34 @@ code0110
                                       * JSR stores the return location into the stack
                                       * so the 68k can return back to the JSR, and continue
             
+            CLR.L   D0                     
+            MOVE.W  D7,D0             * Put instruction into D0
+            AND.W   #$00FF,D0         * Masks the 0-8 bits DISPLACEMENT
+            CMPI.B  #$00,D0           * Check if dispalcement is #$00
+            BEQ     displacement_00   * branch to 16-bit displacement 
+            
+            ************** (0)0 ************** 
+            CLR.L   D0                          
+            MOVE.W  D7,D0             * Put instruction into D0
+            AND.W   #$00F0,D0         * Masks to get the 4-7 bits first byte
+            LSR.W   #4,D0             * Move to the right            
+               
+            MULU.W  #6,D0       
+            LEA     hex_table,A6 
+            JSR     0(A6,D0)
+                
+            ************** 0(0) **************   
+            CLR.L   D0                     
+            MOVE.W  D7,D0             * Put instruction into D0
+            AND.W   #$000F,D0         * Masks to get the 0-3 bits first byte   
+                            
+            MULU.W  #6,D0       
+            LEA     hex_table,A6 
+            JSR     0(A6,D0)
+            ADDQ.W    #2,BUFFER_COUNTER ; Increase the buffer counter
+            BRA       displacement_00_end ; skip the assignment for dispalcement = $00
+          
+displacement_00           
             ADDQ.L   #2,START_ADDR  ; MOVE pointer to next byte
             MOVEA.L START_ADDR, A3  ; Loads the start address to A3
             
@@ -2140,7 +2202,7 @@ bcc_NUM
             BRA     loop_bcc_back   ; back to loop
 loop_bcc_end                          
             ADDQ.W    #4,BUFFER_COUNTER ; Increase the buffer counter
-            
+displacement_00_end            
             MOVEM.L     (SP)+, D0-D7/A0-A1/A3-A6
             RTS       
 code0111    
@@ -2214,6 +2276,8 @@ code1000
             MOVE.B  #'U',(A2)+   ; Push U into buffer
             MOVE.B  #' ',(A2)+   ; Push SAPCE into buffer
             ADDQ.W    #5,BUFFER_COUNTER ; Increase the buffer counter
+            
+            MOVE.B  #%0001,Immediate_s ; Push Size of immediate data
             
             * DIVU.W < ea > ,Dn             
             MOVE.W  D7,D0             ; Put instruction into D0
@@ -2961,7 +3025,7 @@ PROMPTEND   DC.B    'Enter ending address in hex:',CR,LF,0
 INVALID_MSG DC.B    'Invalid input!',CR,LF,0
 HINT        DC.B    'Hint: Addresses must be between 0 to FFFFFF inclusive, an even number,',CR,LF,'and the starting address must be less than the ending address.',CR,LF,CR,LF,0
 LOAD_MORE     DC.B    CR,LF,'Press enter to load more...',0
-START_OVER    DC.B    CR,LF,'That was exciting! Would you like to try again? (Enter 1 for yes, enter any other key for no)',CR,LF,0
+START_OVER    DC.B    CR,LF,'That was exciting! Would you like to try again?',CR,LF,'(Enter 1 for yes, enter any other key for no)',CR,LF,0
 END_PROCESS   DC.B    CR,LF,':( See you again soon!',0
 MOVE_B      DC.B    'MOVE.B',CR,LF,0   
 MOVE_W      DC.B    'MOVE.W',CR,LF,0  
