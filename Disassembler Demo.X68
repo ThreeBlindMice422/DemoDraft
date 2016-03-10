@@ -233,9 +233,9 @@ c0100_jum_tab JMP j_clr_b
 
 j_clr_b
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     CLR_B,A1          * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15                * display the message    
+*            LEA     CLR_B,A1          * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15                * display the message    
             
             MOVE.B  #'C',(A2)+   ; Push C into buffer
             MOVE.B  #'L',(A2)+   ; Push L into buffer
@@ -289,9 +289,9 @@ j_movem_w_jsr_clr_l
             RTS    
 j_movem_l   
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     MOVEM_L,A1          * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15                * display the message   
+*            LEA     MOVEM_L,A1          * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15                * display the message   
             
             MOVE.B  #'M',(A2)+   ; Push M into buffer
             MOVE.B  #'O',(A2)+   ; Push O into buffer
@@ -324,9 +324,9 @@ j_0100_101  STOP    #$2700
 j_0100_110  STOP    #$2700
 j_lea
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     LEA,A1          * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15                * display the message    
+*            LEA     LEA,A1          * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15                * display the message    
             
             MOVE.B  #'L',(A2)+   ; Push L into buffer
             MOVE.B  #'E',(A2)+   ; Push E Into buffer
@@ -358,9 +358,9 @@ nop_clr_w_rts_jmp_tab JMP j_nop_clr_rts_00
 j_nop_clr_rts_00    STOP    #$2700
 j_clr_w
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     CLR_W,A1          * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15                * display the message   
+*            LEA     CLR_W,A1          * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15                * display the message   
             
             MOVE.B  #'C',(A2)+   ; Push C into buffer
             MOVE.B  #'L',(A2)+   ; Push L into buffer
@@ -403,9 +403,9 @@ nop_rts_jmp_tab JMP j_nop
             JMP j_rts 
 j_nop
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     NOP,A1          * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15             * display the message   
+*            LEA     NOP,A1          * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15             * display the message   
                      
             MOVE.B  #'N',(A2)+   ; Push N into buffer
             MOVE.B  #'O',(A2)+   ; Push O into buffer
@@ -420,9 +420,9 @@ j_nop
             RTS    
 j_rts 
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     RTS,A1          * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15             * display the message 
+*            LEA     RTS,A1          * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15             * display the message 
             
             MOVE.B  #'R',(A2)+   ; Push R into buffer
             MOVE.B  #'T',(A2)+   ; Push T into buffer
@@ -445,9 +445,9 @@ movem_w_jsr_clr_L_tab JMP j_movem_w_reg_mem
             JMP j_jsr
 j_movem_w_reg_mem  
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     MOVEM_W,A1          * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15                * display the message    
+*            LEA     MOVEM_W,A1          * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15                * display the message    
             
             MOVE.B  #'M',(A2)+   ; Push M into buffer
             MOVE.B  #'O',(A2)+   ; Push O into buffer
@@ -471,9 +471,9 @@ j_movem_w_reg_mem
             RTS
 j_clr_l
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     CLR_L,A1          * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15                * display the message    
+*            LEA     CLR_L,A1          * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15                * display the message    
             
             MOVE.B  #'C',(A2)+   ; Push C into buffer
             MOVE.B  #'L',(A2)+   ; Push L into buffer
@@ -494,9 +494,9 @@ j_clr_l
             RTS
 j_movem_w_mem_reg   
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     MOVEM_W,A1          * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15                * display the message   
+*            LEA     MOVEM_W,A1          * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15                * display the message   
             
             MOVE.B  #'M',(A2)+   ; Push M into buffer
             MOVE.B  #'O',(A2)+   ; Push O into buffer
@@ -519,9 +519,9 @@ j_movem_w_mem_reg
             RTS 
 j_jsr
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     JSR,A1          * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15              * display the message    
+*            LEA     JSR,A1          * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15              * display the message    
                        
             MOVE.B   #'J',(A2)+      ; Push JSR SAPCE into buffer   
             MOVE.B   #'S',(A2)+
@@ -832,9 +832,9 @@ reg_b_jum_tab   JMP j_asr_b
 
 j_asr_b 
                 MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-                LEA     ASR_B,A1          * loads string to A1
-                MOVE.B  #14,D0
-                TRAP    #15                * display the message 
+*                LEA     ASR_B,A1          * loads string to A1
+*                MOVE.B  #14,D0
+*                TRAP    #15                * display the message 
    
                 MOVE.B  #'A',(A2)+   ; Push A into buffer
                 MOVE.B  #'S',(A2)+   ; Push S into buffer
@@ -853,9 +853,9 @@ j_reg_b_011     STOP    #$2700
 j_reg_b_100     STOP    #$2700
 j_lsl_b
                 MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-                LEA     LSL_B,A1          * loads string to A1
-                MOVE.B  #14,D0
-                TRAP    #15                * display the message   
+*                LEA     LSL_B,A1          * loads string to A1
+*                MOVE.B  #14,D0
+*                TRAP    #15                * display the message   
                 
                 MOVE.B  #'L',(A2)+   ; Push L into buffer
                 MOVE.B  #'S',(A2)+   ; Push S into buffer
@@ -871,9 +871,9 @@ j_lsl_b
 j_reg_b_110     STOP    #$2700
 j_rol_b
                 MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-                LEA     ROL_B,A1          * loads string to A1
-                MOVE.B  #14,D0
-                TRAP    #15                * display the message  
+*                LEA     ROL_B,A1          * loads string to A1
+*                MOVE.B  #14,D0
+*                TRAP    #15                * display the message  
 
                 MOVE.B  #'R',(A2)+   ; Push R into buffer
                 MOVE.B  #'O',(A2)+   ; Push O into buffer
@@ -898,9 +898,9 @@ reg_w_jum_tab   JMP j_asr_w
 
 j_asr_w
                 MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-                LEA     ASR_W,A1          * loads string to A1
-                MOVE.B  #14,D0
-                TRAP    #15                * display the message  
+*                LEA     ASR_W,A1          * loads string to A1
+*                MOVE.B  #14,D0
+*                TRAP    #15                * display the message  
                 
                 MOVE.B  #'A',(A2)+   ; Push A into buffer
                 MOVE.B  #'S',(A2)+   ; Push S into buffer
@@ -918,9 +918,9 @@ j_reg_w_011     STOP    #$2700
 j_reg_w_100     STOP    #$2700
 j_lsl_w
                 MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-                LEA     LSL_W,A1          * loads string to A1
-                MOVE.B  #14,D0
-                TRAP    #15                * display the message  
+*                LEA     LSL_W,A1          * loads string to A1
+*                MOVE.B  #14,D0
+*                TRAP    #15                * display the message  
 
                 MOVE.B  #'L',(A2)+   ; Push L into buffer
                 MOVE.B  #'S',(A2)+   ; Push S into buffer
@@ -935,9 +935,9 @@ j_lsl_w
 j_reg_w_110     STOP    #$2700
 j_rol_w
                 MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-                LEA     ROL_W,A1          * loads string to A1
-                MOVE.B  #14,D0
-                TRAP    #15                * display the message  
+*                LEA     ROL_W,A1          * loads string to A1
+*                MOVE.B  #14,D0
+*                TRAP    #15                * display the message  
 
                 MOVE.B  #'R',(A2)+   ; Push R into buffer
                 MOVE.B  #'O',(A2)+   ; Push O into buffer
@@ -961,9 +961,9 @@ reg_l_jum_tab   JMP j_asr_l
 
 j_asr_l
                 MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-                LEA     ASR_L,A1          * loads string to A1
-                MOVE.B  #14,D0
-                TRAP    #15                * display the message    
+*                LEA     ASR_L,A1          * loads string to A1
+*                MOVE.B  #14,D0
+*                TRAP    #15                * display the message    
                 
                 MOVE.B  #'A',(A2)+   ; Push A into buffer
                 MOVE.B  #'S',(A2)+   ; Push S into buffer
@@ -981,9 +981,9 @@ j_reg_l_011     STOP    #$2700
 j_reg_l_100     STOP    #$2700
 j_lsl_l
                 MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-                LEA     LSL_L,A1          * loads string to A1
-                MOVE.B  #14,D0
-                TRAP    #15                * display the message 
+*                LEA     LSL_L,A1          * loads string to A1
+*                MOVE.B  #14,D0
+*                TRAP    #15                * display the message 
 
                 MOVE.B  #'L',(A2)+   ; Push L into buffer
                 MOVE.B  #'S',(A2)+   ; Push S into buffer
@@ -998,9 +998,9 @@ j_lsl_l
 j_reg_l_110     STOP    #$2700
 j_rol_l
                 MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-                LEA     ROL_L,A1          * loads string to A1
-                MOVE.B  #14,D0
-                TRAP    #15                * display the message 
+*                LEA     ROL_L,A1          * loads string to A1
+*                MOVE.B  #14,D0
+*                TRAP    #15                * display the message 
 
                 MOVE.B  #'R',(A2)+   ; Push R into buffer
                 MOVE.B  #'O',(A2)+   ; Push O into buffer
@@ -1024,9 +1024,9 @@ mem_jum_tab     JMP j_asr
 
 j_asr   
                 MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-                LEA     ASR,A1          * loads string to A1
-                MOVE.B  #14,D0
-                TRAP    #15                * display the message    
+*                LEA     ASR,A1          * loads string to A1
+*                MOVE.B  #14,D0
+*                TRAP    #15                * display the message    
                 
                 MOVE.B  #'A',(A2)+   ; Push A into buffer
                 MOVE.B  #'S',(A2)+   ; Push S into buffer
@@ -1040,9 +1040,9 @@ j_mem_001       STOP    #$2700
 j_mem_010       STOP    #$2700
 j_lsl   
                 MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-                LEA     LSL,A1          * loads string to A1
-                MOVE.B  #14,D0
-                TRAP    #15                * display the message 
+*                LEA     LSL,A1          * loads string to A1
+*                MOVE.B  #14,D0
+*                TRAP    #15                * display the message 
         
                 MOVE.B  #'L',(A2)+   ; Push L into buffer
                 MOVE.B  #'S',(A2)+   ; Push S into buffer
@@ -1057,9 +1057,9 @@ j_mem_101       STOP    #$2700
 j_mem_110       STOP    #$2700
 j_rol
                 MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-                LEA     ROL,A1          * loads string to A1
-                MOVE.B  #14,D0
-                TRAP    #15                * display the message    
+*                LEA     ROL,A1          * loads string to A1
+*                MOVE.B  #14,D0
+*                TRAP    #15                * display the message    
                 
                 MOVE.B  #'R',(A2)+   ; Push R into buffer
                 MOVE.B  #'O',(A2)+   ; Push O into buffer
@@ -1080,9 +1080,9 @@ and_jmp_tab JMP     j_and_b             * AND & MULS.W jump table
             JMP     j_muls_w
 j_and_b
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     AND_B,A1            * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15                 * display the message
+*            LEA     AND_B,A1            * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15                 * display the message
             
             MOVE.B  #'A',(A2)+   ; Push A into buffer
             MOVE.B  #'N',(A2)+   ; Push N into buffer
@@ -1110,9 +1110,9 @@ j_and_b
             RTS
 j_and_w
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     AND_W,A1            * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15                 * display the message
+*            LEA     AND_W,A1            * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15                 * display the message
             
             MOVE.B  #'A',(A2)+   ; Push A into buffer
             MOVE.B  #'N',(A2)+   ; Push N into buffer
@@ -1140,9 +1140,9 @@ j_and_w
             RTS
 j_and_l
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     AND_L,A1            * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15                 * display the message
+*            LEA     AND_L,A1            * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15                 * display the message
             
             MOVE.B  #'A',(A2)+   ; Push A into buffer
             MOVE.B  #'N',(A2)+   ; Push N into buffer
@@ -1171,9 +1171,9 @@ j_and_l
 c0011    STOP    #$2700
 j_and_b_d_ea
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     AND_B,A1            * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15                 * display the message
+*            LEA     AND_B,A1            * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15                 * display the message
             
             MOVE.B  #'A',(A2)+   ; Push A into buffer
             MOVE.B  #'N',(A2)+   ; Push N into buffer
@@ -1201,9 +1201,9 @@ j_and_b_d_ea
             RTS
 j_and_w_d_ea
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     AND_W,A1            * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15                 * display the message
+*            LEA     AND_W,A1            * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15                 * display the message
             
             MOVE.B  #'A',(A2)+   ; Push A into buffer
             MOVE.B  #'N',(A2)+   ; Push N into buffer
@@ -1229,9 +1229,9 @@ j_and_w_d_ea
             RTS
 j_and_l_d_ea
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     AND_L,A1            * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15                 * display the message
+*            LEA     AND_L,A1            * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15                 * display the message
             
             MOVE.B  #'A',(A2)+   ; Push A into buffer
             MOVE.B  #'N',(A2)+   ; Push N into buffer
@@ -1257,9 +1257,9 @@ j_and_l_d_ea
             RTS
 j_muls_w      
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     MULS_W,A1            * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15                 * display the message
+*            LEA     MULS_W,A1            * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15                 * display the message
             
             MOVE.B  #'M',(A2)+   ; Push M into buffer
             MOVE.B  #'U',(A2)+   ; Push U into buffer
@@ -1293,9 +1293,9 @@ addi_jmp_tab JMP     j_addi_b             * ADDI jump table
             JMP     j_addi_l
 j_addi_b
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     ADDI_B,A1            * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15                  * display the message
+*            LEA     ADDI_B,A1            * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15                  * display the message
             
             MOVE.B  #'A',(A2)+   ; Push A into buffer
             MOVE.B  #'D',(A2)+   ; Push D into buffer
@@ -1319,9 +1319,9 @@ j_addi_b
             RTS
 j_addi_w
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     ADDI_W,A1            * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15                  * display the message
+*            LEA     ADDI_W,A1            * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15                  * display the message
             
             MOVE.B  #'A',(A2)+   ; Push A into buffer
             MOVE.B  #'D',(A2)+   ; Push D into buffer
@@ -1345,9 +1345,9 @@ j_addi_w
             RTS
 j_addi_l
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     ADDI_L,A1            * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15                  * display the message
+*            LEA     ADDI_L,A1            * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15                  * display the message
             
             MOVE.B  #'A',(A2)+   ; Push A into buffer
             MOVE.B  #'D',(A2)+   ; Push D into buffer
@@ -1376,9 +1376,9 @@ cmp_jmp_tab JMP     j_cmp_b             * CMP jump table
             JMP     j_cmp_l
 j_cmp_b
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     CMP_B,A1            * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15                 * display the message
+*            LEA     CMP_B,A1            * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15                 * display the message
             
             MOVE.B  #'C',(A2)+   ; Push C into buffer
             MOVE.B  #'M',(A2)+   ; Push M into buffer
@@ -1406,9 +1406,9 @@ j_cmp_b
             RTS
 j_cmp_w
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     CMP_W,A1            * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15                 * display the message
+*            LEA     CMP_W,A1            * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15                 * display the message
             
             MOVE.B  #'C',(A2)+   ; Push C into buffer
             MOVE.B  #'M',(A2)+   ; Push M into buffer
@@ -1436,9 +1436,9 @@ j_cmp_w
             RTS
 j_cmp_l
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     CMP_L,A1            * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15                 * display the message
+*            LEA     CMP_L,A1            * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15                 * display the message
             
             MOVE.B  #%0010,Immediate_s ; Push Size of immediate data
             
@@ -1475,9 +1475,9 @@ sub_jmp_tab JMP     j_sub_b             * SUB jump table
 
 j_sub_b
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     SUB_B,A1            * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15                 * display the message
+*            LEA     SUB_B,A1            * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15                 * display the message
             
             MOVE.B  #'S',(A2)+   ; Push S into buffer
             MOVE.B  #'U',(A2)+   ; Push U into buffer
@@ -1506,9 +1506,9 @@ j_sub_b
             
 j_sub_w       
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     SUB_W,A1            * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15                 * display the message
+*            LEA     SUB_W,A1            * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15                 * display the message
             
             MOVE.B  #'S',(A2)+   ; Push S into buffer
             MOVE.B  #'U',(A2)+   ; Push U into buffer
@@ -1536,9 +1536,9 @@ j_sub_w
             RTS
 j_sub_l         
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     SUB_L,A1            * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15                 * display the message
+*            LEA     SUB_L,A1            * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15                 * display the message
             
             MOVE.B  #'S',(A2)+   ; Push S into buffer
             MOVE.B  #'U',(A2)+   ; Push U into buffer
@@ -1567,9 +1567,9 @@ j_sub_l
 code011     STOP    #$2700
 j_sub_b_d_ea
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     SUB_B,A1            * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15                 * display the message
+*            LEA     SUB_B,A1            * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15                 * display the message
             
             MOVE.B  #'S',(A2)+   ; Push S into buffer
             MOVE.B  #'U',(A2)+   ; Push U into buffer
@@ -1596,9 +1596,9 @@ j_sub_b_d_ea
             
 j_sub_w_d_ea       
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     SUB_W,A1            * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15                 * display the message
+*            LEA     SUB_W,A1            * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15                 * display the message
             
             MOVE.B  #'S',(A2)+   ; Push S into buffer
             MOVE.B  #'U',(A2)+   ; Push U into buffer
@@ -1624,9 +1624,9 @@ j_sub_w_d_ea
             RTS
 j_sub_l_d_ea         
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     SUB_L,A1            * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15                 * display the message
+*            LEA     SUB_L,A1            * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15                 * display the message
             
             MOVE.B  #'S',(A2)+   ; Push S into buffer
             MOVE.B  #'U',(A2)+   ; Push U into buffer
@@ -1664,9 +1664,9 @@ add_jmp_tab JMP     j_add_b             * ADD & ADDA jump table
                               
 j_add_b
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     ADD_B,A1            * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15                 * display the message
+*            LEA     ADD_B,A1            * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15                 * display the message
             
             MOVE.B  #'A',(A2)+   ; Push A into buffer
             MOVE.B  #'D',(A2)+   ; Push D into buffer
@@ -1695,9 +1695,9 @@ j_add_b
             
 j_add_w       
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     ADD_W,A1            * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15                 * display the message
+*            LEA     ADD_W,A1            * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15                 * display the message
             
             MOVE.B  #'A',(A2)+   ; Push A into buffer
             MOVE.B  #'D',(A2)+   ; Push D into buffer
@@ -1725,9 +1725,9 @@ j_add_w
             RTS
 j_add_l         
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     ADD_L,A1            * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15                 * display the message
+*            LEA     ADD_L,A1            * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15                 * display the message
             
             MOVE.B  #'A',(A2)+   ; Push A into buffer
             MOVE.B  #'D',(A2)+   ; Push D into buffer
@@ -1755,9 +1755,9 @@ j_add_l
             RTS
 j_adda_w         
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     ADDA_W,A1            * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15                 * display the message
+*            LEA     ADDA_W,A1            * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15                 * display the message
             
             MOVE.B  #'A',(A2)+   ; Push A into buffer
             MOVE.B  #'D',(A2)+   ; Push D into buffer
@@ -1787,9 +1787,9 @@ j_adda_w
             RTS   
 j_add_b_d_ea
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     ADD_B,A1            * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15                 * display the message
+*            LEA     ADD_B,A1            * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15                 * display the message
             
             MOVE.B  #'A',(A2)+   ; Push A into buffer
             MOVE.B  #'D',(A2)+   ; Push D into buffer
@@ -1818,9 +1818,9 @@ j_add_b_d_ea
             
 j_add_w_d_ea       
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     ADD_W,A1            * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15                 * display the message
+*            LEA     ADD_W,A1            * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15                 * display the message
             
             MOVE.B  #'A',(A2)+   ; Push A into buffer
             MOVE.B  #'D',(A2)+   ; Push D into buffer
@@ -1846,9 +1846,9 @@ j_add_w_d_ea
             RTS
 j_add_l_d_ea         
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     ADD_L,A1            * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15                 * display the message
+*            LEA     ADD_L,A1            * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15                 * display the message
             
             MOVE.B  #'A',(A2)+   ; Push A into buffer
             MOVE.B  #'D',(A2)+   ; Push D into buffer
@@ -1874,9 +1874,9 @@ j_add_l_d_ea
             RTS
 j_adda_l
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     ADDA_L,A1            * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15                 * display the message
+*            LEA     ADDA_L,A1            * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15                 * display the message
             
             MOVE.B  #'A',(A2)+   ; Push A into buffer
             MOVE.B  #'D',(A2)+   ; Push D into buffer
@@ -1912,9 +1912,9 @@ bcc_jmp_tab JMP   j_bcc
 
 j_bcc   
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     BCC,A1            * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15               * display the message
+*            LEA     BCC,A1            * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15               * display the message
             
             MOVE.B  #'B',(A2)+   ; Push B into buffer
             MOVE.B  #'C',(A2)+   ; Push C into buffer
@@ -1931,9 +1931,9 @@ j_bcc
 code01      STOP    #$2700
 j_bgt
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     BGT,A1            * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15               * display the message
+*            LEA     BGT,A1            * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15               * display the message
             
             MOVE.B  #'B',(A2)+   ; Push B into buffer
             MOVE.B  #'G',(A2)+   ; Push G into buffer
@@ -1949,9 +1949,9 @@ j_bgt
             RTS
 j_ble
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     BLE,A1            * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15               * display the message
+*            LEA     BLE,A1            * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15               * display the message
             
             MOVE.B  #'B',(A2)+   ; Push B into buffer
             MOVE.B  #'L',(A2)+   ; Push L into buffer
@@ -2004,9 +2004,9 @@ code0000
             RTS
 code0001
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     MOVE_B,A1          * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15                * display the message    
+*            LEA     MOVE_B,A1          * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15                * display the message    
             
             MOVE.B  #'M',(A2)+   ; Push M into buffer
             MOVE.B  #'O',(A2)+   ; Push O into buffer
@@ -2041,9 +2041,9 @@ code0001
             
 code0010    
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     MOVE_L,A1           * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15                 * display the message
+*            LEA     MOVE_L,A1           * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15                 * display the message
                       
             MOVE.B  #'M',(A2)+   ; Push M into buffer
             MOVE.B  #'O',(A2)+   ; Push O into buffer
@@ -2078,9 +2078,9 @@ code0010
 
 code0011    
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     MOVE_W,A1           * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15                 * display the message
+*            LEA     MOVE_W,A1           * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15                 * display the message
             
             MOVE.B  #'M',(A2)+   ; Push M into buffer
             MOVE.B  #'O',(A2)+   ; Push O into buffer
@@ -2207,9 +2207,9 @@ displacement_00_end
             RTS       
 code0111    
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     MOVEQ,A1           * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15                 * display the message
+*            LEA     MOVEQ,A1           * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15                 * display the message
             
             MOVE.B  #'M',(A2)+   ; Push M into buffer
             MOVE.B  #'O',(A2)+   ; Push O into buffer
@@ -2266,9 +2266,9 @@ loop_moveq_data_end
             
 code1000    
             MOVEM.L     D0-D7/A0-A1/A3-A6, -(SP)
-            LEA     DIVU,A1           * loads string to A1
-            MOVE.B  #14,D0
-            TRAP    #15                 * display the message
+*            LEA     DIVU,A1           * loads string to A1
+*            MOVE.B  #14,D0
+*            TRAP    #15                 * display the message
             
             MOVE.B  #'D',(A2)+   ; Push D into buffer
             MOVE.B  #'I',(A2)+   ; Push I into buffer
@@ -3077,6 +3077,7 @@ NOP         DC.B    'NOP',CR,LF,0
 TEST        DC.B    'Bit manipulation/MOVEP/Immediate',CR,LF,0
 
             END    START        ; last line of source
+
 
 
 
